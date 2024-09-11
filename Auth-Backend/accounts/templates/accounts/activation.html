@@ -1,0 +1,19 @@
+{% block subject %}
+【{{ site_name }}】本登録のご案内
+{% endblock subject %}
+
+{% block text_body %}
+{{ name}}様
+
+{{ site_name }}をご利用いただきまして、誠にありがとうございます。
+
+以下のURLをクリックして、本登録を完了してください。
+{{ protocol }}://{{ domain }}/{{url|safe}}
+
+本登録が完了すると、{{ site_name }}の全ての機能をご利用いただけます。
+
+-------------------------------------
+発行元: {{ site_name }}
+-------------------------------------
+
+{% endblock text_body %}
