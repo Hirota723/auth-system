@@ -15,7 +15,7 @@ interface CompleteSignUpProps {
 const CompleteSignUpPage = async ({ params }: CompleteSignUpProps) => {
   const { uid, token } = params;
 
-  // 誤認証情報取得
+  // 誤証情報取得
   const user = await getAuthSession();
 
   if (user) {

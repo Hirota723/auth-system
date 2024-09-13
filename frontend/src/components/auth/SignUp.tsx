@@ -10,6 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -102,6 +103,7 @@ const SignUp = () => {
                     <FormControl>
                       <Input placeholder="名前" {...field} />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -115,6 +117,7 @@ const SignUp = () => {
                     <FormControl>
                       <Input placeholder="xxxx@gmail.com" {...field} />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -128,6 +131,7 @@ const SignUp = () => {
                     <FormControl>
                       <Input type="password" {...field} />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
