@@ -14,7 +14,7 @@
 
 ## 技術
 
-## フロントエンド
+### フロントエンド
 
 - Framework: Next.js
 - Language: TypeScript
