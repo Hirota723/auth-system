@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
-    BaseUserManager,
     PermissionsMixin,
+    BaseUserManager,
 )
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -13,7 +13,7 @@ from hashids import Hashids
 class UserManager(BaseUserManager):
     # 通常ユーザー作成メソッド
     def create_user(self, email, password=None, **extra_fields):
-        # メールアドレスの認証
+        # メールアドレスの検証
         if not email:
             raise ValueError("メールアドレスは必須です")
 
@@ -31,8 +31,8 @@ class UserManager(BaseUserManager):
     # スーパーユーザー作成メソッド
     def create_superuser(self, email, password=None, **extra_fields):
         user = self.create_user(email, password, **extra_fields)
-        user.is_staff = True
         user.is_superuser = True
+        user.is_staff = True
         user.save()
 
         return user
@@ -50,7 +50,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField("更新日", auto_now=True)
     created_at = models.DateTimeField("作成日", auto_now_add=True)
 
-    # アクティブ状態とスタック権限フィールド
+    # アクティブ状態とスタッフ権限フィールド
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

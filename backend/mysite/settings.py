@@ -75,8 +75,6 @@ DATABASES = {
     "default": config("DATABASE_URL", default=default_dburl, cast=dburl),
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,6 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 LANGUAGE_CODE = "ja"
 
 TIME_ZONE = "Asia/Tokyo"
@@ -102,7 +101,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
-STATIC_ROOT = str(BASE_DIR / "static")
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
 
 MEDIA_URL = "/media/"
 
@@ -117,6 +116,8 @@ CLOUDINARY_STORAGE = {
     "API_SECRET": env("CLOUDINARY_API_SECRET"),
 }
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 # メール設定
 EMAIL_BACKEND = env("EMAIL_BACKEND")
 EMAIL_HOST = env("EMAIL_HOST")
@@ -129,7 +130,7 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 # Rest Framework設定
 REST_FRAMEWORK = {
     # 認証が必要
-    "DEFAULT_AUTHENTICATION_CLASSES": [
+    "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
     # JWT認証
@@ -160,7 +161,7 @@ DJOSER = {
     "SEND_ACTIVATION_EMAIL": True,
     # アカウント本登録完了メール
     "SEND_CONFIRMATION_EMAIL": True,
-    # メールアドレス変更変更完了メール
+    # メールアドレス変更完了メール
     "USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
     # パスワード変更完了メール
     "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
@@ -182,13 +183,13 @@ DJOSER = {
     },
     "EMAIL": {
         # アカウント本登録
-        "activation": "accounts.emails.ActivationEmail",
+        "activation": "accounts.email.ActivationEmail",
         # アカウント本登録完了
-        "confirmation": "accounts.emails.ConfirmationEmail",
+        "confirmation": "accounts.email.ConfirmationEmail",
         # パスワード再設定
-        "password_reset": "accounts.emails.ForgotPasswordEmail",
+        "password_reset": "accounts.email.ForgotPasswordEmail",
         # パスワード再設定確認
-        "password_changed_confirmation": "accounts.emails.ResetPasswordEmail",
+        "password_changed_confirmation": "accounts.email.ResetPasswordEmail",
     },
 }
 

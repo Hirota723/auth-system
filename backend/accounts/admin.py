@@ -66,17 +66,9 @@ class UserAdminCustom(UserAdmin):
     # 順番
     ordering = ("updated_at",)
     # リンク
-    list_display_links = (
-        "uid",
-        "name",
-        "email",
-    )
+    list_display_links = ("uid", "name", "email")
     # 編集不可
-    readonly_fields = (
-        "updated_at",
-        "created_at",
-        "uid",
-    )
+    readonly_fields = ("updated_at", "created_at", "uid")
 
 
 admin.site.register(User, UserAdminCustom)
