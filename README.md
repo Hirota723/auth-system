@@ -14,7 +14,7 @@
 
 ## 技術
 
-# フロントエンド
+## フロントエンド
 
 - Framework: Next.js
 - Language: TypeScript
@@ -22,15 +22,15 @@
 - Authentication: NextAuth
 - Image Hosting: Cloudinary
 
-# バックエンド
+### バックエンド
 
 - Python 3.10.8
 - Django 5.0
 - Django REST framework 3.14.0
 
-## フロントエンド
+## .env ファイルの設定
 
-### .env ファイルの設定
+### フロントエンド
 
 ```env
 NEXTAUTH_SECRET=""
@@ -38,9 +38,7 @@ NEXTAUTH_URL=http://localhost:3000
 API_URL=http://localhost:8000
 ```
 
-## バックエンド
-
-### .env ファイルの設定
+### バックエンド
 
 ```env
 CLOUDINARY_NAME=""
