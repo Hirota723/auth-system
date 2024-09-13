@@ -1,6 +1,6 @@
 # 認証システム構築
 
-主な機能:
+## 機能
 
 - 認証
   - ログイン
@@ -11,6 +11,32 @@
   - プロフィール編集
   - パスワード変更
 - プロフィール表示
+
+## 技術
+
+# フロントエンド
+
+- Framework: Next.js
+- Language: TypeScript
+- CSS Module: shadcn/ui
+- Authentication: NextAuth
+- Image Hosting: Cloudinary
+
+# バックエンド
+
+- Python 3.10.8
+- Django 5.0
+- Django REST framework 3.14.0
+
+## フロントエンド
+
+### .env ファイルの設定
+
+```env
+NEXTAUTH_SECRET=""
+NEXTAUTH_URL=http://localhost:3000
+API_URL=http://localhost:8000
+```
 
 ## バックエンド
 
@@ -27,14 +53,4 @@ EMAIL_HOST_PASSWORD=""
 EMAIL_HOST=smtp.gmail.com
 SITE_DOMAIN=localhost:3000
 SITE_NAME=""
-```
-
-## フロントエンド
-
-### .env ファイルの設定
-
-```env
-NEXTAUTH_SECRET=""
-NEXTAUTH_URL=http://localhost:3000
-API_URL=http://localhost:8000
 ```
