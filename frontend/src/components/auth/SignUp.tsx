@@ -59,8 +59,6 @@ const SignUp = () => {
         rePassword: data.password,
       });
 
-      console.log("APIレスポンス:", res);
-
       if (!res.success) {
         toast.error("サインアップに失敗しました");
       }
