@@ -168,3 +168,42 @@ export const resetPassword = async ({
     return { success: false };
   }
 };
+
+export interface UserDetailType {
+  id: number;
+  name: string;
+  email: string;
+  avatar: string | undefined;
+  introduction: string;
+  created_at: string;
+}
+
+interface GetUserDetailProps {
+  userId: string;
+}
+
+// ユーザー詳細取得
+export const getUserDetail = async ({ userId }: GetUserDetailProps) => {
+  try {
+    // APIからユーザー詳細を取得
+    const apiRes = await fetch(`${process.env.API_URL}/api/users/${userId}/`, {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    // APIレスポンスが正常でない場合、失敗とnullを返す
+    if (!apiRes.ok) {
+      return { success: false, user: null };
+    }
+
+    // レスポンスをJSONとして解析し、ユーザー詳細を取得
+    const user: UserDetailType = await apiRes.json();
+
+    // 成功と取得したユーザー詳細を返す
+    return { success: true, user };
+  } catch (error) {
+    console.error(error);
+    // エラー発生時に、失敗とnullを返す
+    return { success: false, user: null };
+  }
+};
