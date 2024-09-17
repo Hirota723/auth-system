@@ -207,3 +207,51 @@ export const getUserDetail = async ({ userId }: GetUserDetailProps) => {
     return { success: false, user: null };
   }
 };
+
+interface UpdateUserProps {
+  accessToken: string;
+  name: string;
+  introduction: string | undefined;
+  avatar: string | undefined;
+}
+
+// プロフィール編集
+export const updateUser = async ({
+  accessToken,
+  name,
+  introduction,
+  avatar,
+}: UpdateUserProps) => {
+  try {
+    const body = JSON.stringify({
+      name,
+      introduction,
+      avatar,
+    });
+
+    // プロフィール編集を送信
+    const apiRes = await fetch(`${process.env.API_URL}/api/auth/users/me/`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `JWT ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body,
+    });
+
+    // APIレスポンスが正常でない場合、失敗とnullを返す
+    if (!apiRes.ok) {
+      return { success: false, user: null };
+    }
+
+    // レスポンスをJSONとして解析し、ユーザー詳細を取得
+    const user: UserDetailType = await apiRes.json();
+
+    // 成功と取得したユーザー詳細を返す
+    return { success: true, user };
+  } catch (error) {
+    console.error(error);
+    // エラー発生時に、失敗とnullを返す
+    return { success: false, user: null };
+  }
+};
