@@ -46,7 +46,7 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      // アカウント仮登録
+      // パスワード再設定
       const res = await forgotPassword(data);
 
       if (!res.success) {

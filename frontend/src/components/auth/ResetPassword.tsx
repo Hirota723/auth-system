@@ -60,7 +60,7 @@ const ResetPassword = ({ uid, token }: ResetPasswordProps) => {
     setIsLoading(true);
 
     try {
-      // アカウント仮登録
+      // パスワード再設定
       const res = await resetPassword({
         uid,
         token,
