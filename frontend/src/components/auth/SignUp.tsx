@@ -61,6 +61,7 @@ const SignUp = () => {
 
       if (!res.success) {
         toast.error("サインアップに失敗しました");
+        return;
       }
 
       setIsSignUp(true);

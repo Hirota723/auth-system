@@ -51,6 +51,7 @@ const ForgotPassword = () => {
 
       if (!res.success) {
         toast.error("パスワードの再設定に失敗しました");
+        return;
       }
 
       setIsForgotPassword(true);
