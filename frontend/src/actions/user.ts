@@ -255,3 +255,51 @@ export const updateUser = async ({
     return { success: false, user: null };
   }
 };
+
+interface UpdatePasswordProps {
+  accessToken: string;
+  currentPassword: string;
+  newPassword: string;
+  reNewPassword: string;
+}
+
+// パスワード変更
+export const updatePassword = async ({
+  accessToken,
+  currentPassword,
+  newPassword,
+  reNewPassword,
+}: UpdatePasswordProps) => {
+  try {
+    const body = JSON.stringify({
+      current_password: currentPassword,
+      new_password: newPassword,
+      re_new_password: reNewPassword,
+    });
+
+    // パスワード変更を送信
+    const apiRes = await fetch(
+      `${process.env.API_URL}/api/auth/users/set_password/`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `JWT ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body,
+      }
+    );
+
+    // APIレスポンスが正常でない場合、失敗を返す
+    if (!apiRes.ok) {
+      return { success: false };
+    }
+
+    // 成功を返す
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    // エラー発生時に、失敗を返す
+    return { success: false };
+  }
+};
